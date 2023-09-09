@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Show Tasks
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    {% for task in tasks %}
+    <div class="card mb-4">
+        <div class="card-header">
+            <span class="font-weight-bold">by: {{ task.user }}</span>
+        </div>
+        <div class="card-body">
+            <h3 class="card-title">{{ task.title }}</h3>
+            <p class="card-text">{{ task.description }}</p>
+            {% if task.importance_tag == 'M' %}
+                <small class="badge bg-info-subtle text-info-emphasis rounded-pill">Middle</small>
+            {% elif task.importance_tag == 'H' %}
+                <small class="badge bg-danger-subtle text-danger-emphasis rounded-pill">High</small>
+            {% else %}
+                <small class="badge bg-success-subtle text-success-emphasis rounded-pill">Low</small>
+            {% endif %}
+            {% for goal in task.goal.all %}
+                <h4 class="badge text-bg-dark rounded-pill">{{goal}}</h4>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

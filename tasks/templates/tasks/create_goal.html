@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Create Tasks
+{% endblock %}
+
+{% block content %}
+    <div class="form-box">
+        <form action="{% url 'create-goal' %}" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" class="btn btn-success" value="create">
+        </form>
+    </div>
+{% endblock %}
