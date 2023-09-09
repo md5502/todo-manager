@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.admin.models import User
+from django.contrib.auth.models import User
 from uuid import uuid4
 # Create your models here.
 class Task(models.Model):
@@ -10,12 +10,12 @@ class Task(models.Model):
     ]
     title = models.CharField(max_length=255)
     description = models.TextField(null=True, blank=True)
-    goal = models.ManyToManyField('Goal')
+    goal = models.ManyToManyField('Goal', null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     is_completed = models.BooleanField(default=False)
     importance_tag = models.CharField(max_length=1, choices=IMPORTANCE_TAGS)
     
-    id = models.CharField(unique=True, ForeignKey=True, default=uuid4, editable=False)
+    id = models.CharField(max_length=255, unique=True, primary_key=True, default=uuid4, editable=False)
 
     create_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -36,7 +36,8 @@ class Goal(models.Model):
     importance_tag = models.CharField(max_length=1, choices=IMPORTANCE_TAGS)
     death_line = models.DateField()
     
-    id = models.CharField(unique=True, ForeignKey=True, default=uuid4, editable=False)
+    id = models.CharField(max_length=255, unique=True, primary_key=True, default=uuid4, editable=False)
+
 
     create_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
