@@ -10,7 +10,7 @@ class Task(models.Model):
     ]
     title = models.CharField(max_length=255)
     description = models.TextField(null=True, blank=True)
-    goal = models.ManyToManyField('Goal', null=True, blank=True)
+    goal = models.ManyToManyField('Goal', blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     is_completed = models.BooleanField(default=False)
     importance_tag = models.CharField(max_length=1, choices=IMPORTANCE_TAGS)
