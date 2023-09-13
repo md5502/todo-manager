@@ -22,7 +22,7 @@ class GoalCreateForm(forms.ModelForm):
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class': 'form-control'}),
             'user': forms.Select(attrs={'class': 'form-control'}),
-            'is_completed': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+            'is_completed': forms.CheckboxInput(attrs={'class': 'form-check-input mx-1'}),
             'importance_tag': forms.Select(attrs={'class': 'form-control'}),
             'death_line': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'})
         }
