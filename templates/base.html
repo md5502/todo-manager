@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{%block title %} {% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}">
-    <link rel="stylesheet" href="{% static 'css/style.css'%}">
     <script src="{% static 'js/bootstrap.js'%}"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
 
     {%block style %} {% endblock %}
 </head>
@@ -19,18 +19,12 @@
     {% endblock %}
     {% if messages %}
         {% for message in messages %}
-            <div class="container mt-5">
-                <div class="row justify-content-center">
-                    <div class="col-md-6">
-                        <div class="position-fixed" style="bottom: 20px; right: 20px;">
-                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-                                {{ message }}
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+            <div class="position-fixed" style="top: 80px; right: 20px;">
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
             </div>
         {% endfor %}

@@ -7,6 +7,14 @@
 {% endblock %}
 
 {% block content %}
-    <a href="#" class="btn btn-success">test style</a>
+    <header class="landing-header">
+        <div class="container d-flex align-items-center justify-content-center" style="min-height: 70vh;">
+            <div class="text-center">
+                <h1>Welcome to Todo Manager</h1>
+                <p class="landing-text">Your all-in-one solution for managing tasks, goals, and teams.</p>
+                <a href="{% url 'login' %}" class="btn btn-get-started">Get Started</a>
+            </div>
+        </div>
+    </header>
 {% endblock %}
 

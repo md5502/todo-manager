@@ -5,13 +5,11 @@
 	  </button>
 
 	  <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
-		<a class="navbar-brand col-lg-3 me-0" href="#">TODO-manager</a>
+		<a class="navbar-brand col-lg-3 me-0" href="{% url 'home' %}">TODO-manager</a>
 		<ul class="navbar-nav col-lg-6 justify-content-lg-center">
+		  {% if request.user.is_authenticated %}
 		  <li class="nav-item">
-			<a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
-		  </li>
-		  <li class="nav-item">
-			<a class="nav-link" href="{% url 'show-tasks' %}">todoer</a>
+			<a class="nav-link" href="{% url 'show-tasks' %}">Dashboard</a>
 		  </li>
 		  <li class="nav-item">
 			<a class="nav-link" href="{% url 'create-task' %}">add Task</a>
@@ -19,6 +17,7 @@
 		  <li class="nav-item">
 			<a class="nav-link" href="{% url 'create-goal' %}">add Goal</a>
 		  </li>
+		  {% endif %}
 		</ul>
 		<div class="d-lg-flex col-lg-3 justify-content-lg-end">
 			{% if request.user.is_authenticated %}

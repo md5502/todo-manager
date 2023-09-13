@@ -3,7 +3,7 @@
     width: 500px;
     padding: 30px 50px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    margin-top: 20px;
+    margin-top: 40px;
     margin-bottom: 50px;
     border-radius: 15px;
     height: auto !important;
@@ -13,4 +13,39 @@
     font-weight: bold;
     color: #333;
     text-shadow: none;
+}
+nav{
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 15px 10px -10px;
+}
+/* Add your custom CSS styles here */
+.landing-header {
+    background-image: url('../images/bg.png'); /* Replace 'your-image.jpg' with your image path */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+.landing-text {
+    font-size: 24px;
+    margin-top: 30px;
+}
+
+.btn-get-started {
+    font-size: 18px;
+    padding: 10px 30px;
+    margin-top: 30px;
+    background-color: #17a2b8;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+}
+
+.btn-get-started:hover {
+    background-color: #138496;
 }
