@@ -17,19 +17,3 @@ class Team(models.Model):
 class TeamMember(models.Model):
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
     member = models.ForeignKey(User, on_delete=models.CASCADE)
-
-
-
-
-class Task(models.Model):
-    title = models.CharField(max_length=255)
-    description = models.TextField(blank=True, null=True)
-    team = models.ForeignKey(Team, on_delete=models.CASCADE)
-    assigned_members = models.ManyToManyField(User, related_name='tasks_assigned', blank=True)
-
-    id = models.CharField(max_length=255, unique=True, primary_key=True, default=uuid4, editable=False)
-    create_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return self.title
