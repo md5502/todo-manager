@@ -17,3 +17,6 @@ class Team(models.Model):
 class TeamMember(models.Model):
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
     member = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.team.name
