@@ -6,27 +6,34 @@
 {% endblock %}
 
 {% block content %}
-<div class="container mt-4">
-    {% for task in tasks %}
-    <div class="card mb-4">
-        <div class="card-header">
-            <span class="font-weight-bold">by: {{ task.user }}</span>
+<div class="py-5">
+    <div class="container">
+        <div class="row hidden-md-up">
+            {% for task in tasks %}
+            <div class="col-md-4">
+                <div class="card rounded shadow" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">{{ task.title }}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    {% if task.importance_tag == 'M' %}
+                    <small class="badge bg-info-subtle text-info-emphasis rounded-pill">Middle</small>
+                    {% elif task.importance_tag == 'H' %}
+                        <small class="badge bg-danger-subtle text-danger-emphasis rounded-pill">High</small>
+                    {% else %}
+                        <small class="badge bg-success-subtle text-success-emphasis rounded-pill">Low</small>
+                    {% endif %}
+                  </h6>
+                    {% for goal in task.goal.all %}
+                        <a href="#" class="badge text-bg-dark rounded-pill">{{goal}}</a>
+                    {% endfor %}
+                  <p class="card-text">{{ task.description }}</p>
+                  <a href="{% url 'edit-task' task.id %}" class="card-link">Edit</a>
+                  <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
         </div>
-        <div class="card-body">
-            <h3 class="card-title">{{ task.title }}</h3>
-            <p class="card-text">{{ task.description }}</p>
-            {% if task.importance_tag == 'M' %}
-                <small class="badge bg-info-subtle text-info-emphasis rounded-pill">Middle</small>
-            {% elif task.importance_tag == 'H' %}
-                <small class="badge bg-danger-subtle text-danger-emphasis rounded-pill">High</small>
-            {% else %}
-                <small class="badge bg-success-subtle text-success-emphasis rounded-pill">Low</small>
-            {% endif %}
-            {% for goal in task.goal.all %}
-                <h4 class="badge text-bg-dark rounded-pill">{{goal}}</h4>
-            {% endfor %}
-        </div>
+        
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
 {% endblock %}

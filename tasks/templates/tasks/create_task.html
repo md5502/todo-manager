@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block content %}
+    {% if page == 'create' %}
     <div class="form-box">
         <form action="{% url 'create-task' %}" method="post">
             {% csrf_token %}
@@ -13,4 +14,13 @@
             <input type="submit" class="btn btn-success" value="create">
         </form>
     </div>
+    {% else %}
+    <div class="form-box">
+        <form action="{% url 'edit-task' id %}" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" class="btn btn-success" value="create">
+        </form>
+    </div>
+    {% endif %}
 {% endblock %}
