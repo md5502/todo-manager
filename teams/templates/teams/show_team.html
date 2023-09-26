@@ -13,15 +13,16 @@
             <hr>
             {% if msg %}
                 <p>{{ msg }}</p>
+                <a class="btn btn-success" href="{% url 'create-team' %}">Create a Team</a>
             {% else %}
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Team Name: {{ teams.name }}</h5>
-                        <p class="card-text">Description: {{ teams.description }}</p>
+                        <h5 class="card-title">Team Name: {{ team.name }}</h5>
+                        <p class="card-text">Description: {{ team.description }}</p>
                         <h6 class="card-subtitle mb-2 text-muted">Team Leaders:</h6>
                         <ul>
-                            {% for leader in teams.leaders.all %}
-                                <li>{{ leader.username }}</li>
+                            {% for leader in team_leaders %}
+                                <li>{{ leader }}</li>
                             {% endfor %}
                         </ul>
                     </div>
