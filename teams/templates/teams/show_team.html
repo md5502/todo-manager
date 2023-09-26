@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Team Information
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col">
+            <h1>Team Information</h1>
+            <hr>
+            {% if msg %}
+                <p>{{ msg }}</p>
+            {% else %}
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Team Name: {{ teams.name }}</h5>
+                        <p class="card-text">Description: {{ teams.description }}</p>
+                        <h6 class="card-subtitle mb-2 text-muted">Team Leaders:</h6>
+                        <ul>
+                            {% for leader in teams.leaders.all %}
+                                <li>{{ leader.username }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

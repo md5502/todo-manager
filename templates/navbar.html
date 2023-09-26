@@ -12,11 +12,15 @@
 			<a class="nav-link" href="{% url 'show-tasks' %}">Dashboard</a>
 		  </li>
 		  <li class="nav-item">
+			<a class="nav-link" href="{% url 'show-team' %}">My team</a>
+		  </li> 
+		  <li class="nav-item">
 			<a class="nav-link" href="{% url 'create-task' %}">add Task</a>
 		  </li>
 		  <li class="nav-item">
 			<a class="nav-link" href="{% url 'create-goal' %}">add Goal</a>
 		  </li>
+		  
 		  {% endif %}
 		</ul>
 		<div class="d-lg-flex col-lg-3 justify-content-lg-end">
