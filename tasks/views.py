@@ -17,11 +17,14 @@ def showTasks(request):
 
 @login_required(login_url='login')
 def createTask(request):
+    user = request.user
     form = TaskCreateForm()
     if request.method == 'POST':
         form = TaskCreateForm(request.POST)
         if form.is_valid():
-            form.save()
+            task = form.save(commit=False)
+            task.user = user
+            task.save() 
             messages.success(request, 'task create successfully')
             return redirect(showTasks)
     return render(request, 'tasks/create_task.html', {'form': form,  'page' : 'create'})
@@ -51,7 +54,9 @@ def createGoal(request):
     if request.method == 'POST':
         form = GoalCreateForm(request.POST)
         if form.is_valid():
-            form.save()
+            goal = form.save(commit=False)
+            goal.user = user
+            goal.save()
             messages.success(request, 'goal create successfully')
             return redirect(showTasks)
     return render(request, 'tasks/create_goal.html', {'form': form})
